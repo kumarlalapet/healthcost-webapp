@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Health Cost Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://twitter.github.io/typeahead.js/css/examples.css">
+  </head>
+  <body>
+
+  		<h2 class="example-name" style="text-align: center;">Cost Difference for Medical Conditions / Treatments</h2>
+  	<div class="container">
+
+  		<p class="example-description" style="text-align: center;">
+  			The tool is a simple effort to provide the cost difference associated to a medical condition or treatment. 
+  			The CMS Medicare Medicaid services department has released the <a href="http://www.cms.gov/Research-Statistics-Data-and-Systems/Statistics-Trends-and-Reports/Medicare-Provider-Charge-Data/Physician-and-Other-Supplier.html">2012 Medicare Provider Utilization and Payment Data</a>. 
+  			This data set has close to 10 million payment records made by the government to the Medicare providers nation wide. 
+  			</br></br>The tool utilizes the data and aggregates the payment data nation wide, state wide and city (using 3 map reduce jobs). 
+  			The result data set is loaded into HIVE tables. The accompanying web app utilizes Hive Server 2 to load the data using HIVE JDBC driver. 
+  			The web app is a rudimentary UI to search the aggregated data set.
+  			</br></br></br></br>Please enter below the medical condition / treatment
+        </p>
+        
+  		<div id="the-basics">
+  			<input class="typeahead" id="treatid" type="text" placeholder="Med. Treatment e.g. Ultrasound">
+		</div>
+
+		<div id="nationwidev">
+		<div id="nationwidevdata">
+		<p class="example-description">Nationwide Cost</p>		
+		<p class="example-description">
+			<span><b>Lowest Charged Amount</b></span> : 123 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>Highest Charged Amount</b></span> : 345
+		</p></div></br>
+		Filter by state : <select id="stateid">
+		<option value="--">Select a State</option>
+</select>				
+		</div>
+
+		<div id="statewidev">
+		<div id="statewidevdata">
+		<p class="example-description">Statewide Cost - CA</p>		
+		<p class="example-description">
+			<span><b>Lowest Charged Amount</b></span> : 123 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>Highest Charged Amount</b></span> : 345
+		</p></div></br>
+		Filter by state : <select id="cityid">
+		<option value="--">Select a City</option>
+</select>				
+		</div>
+		
+		<div id="citywidev">
+		<div id="citywidevdata">
+		<p class="example-description">Citywide Cost - Peoria, CA</p>		
+		<p class="example-description">
+			<span><b>Lowest Charged Amount</b></span> : 123 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><b>Highest Charged Amount</b></span> : 345
+		</p></div>	
+		</div>		
+				
+  	</div>
+	<script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
+    <script src="https://twitter.github.io/typeahead.js/js/jquery-1.10.2.min.js"></script>
+    <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+    <script src="examples.js"></script>
+    <script>
+    	var codesAndDescJsonObj;
+    	
+    	
+    	//var sampleJson = '{"10021": "Fna w/o image","10022": "Fna w/image","10040": "Acne surgery","10060": "Drainage of skin abscess","10061": "Drainage of skin abscess"}';
+    	//var jsonObj = jQuery.parseJSON(sampleJson);    	
+    	//jQuery.each(jsonObj, function(i, val) {
+    	//	alert(i+" : "+val)
+    	//});
+    	
+    </script>  	
+  </body>
+</html>
